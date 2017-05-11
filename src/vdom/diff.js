@@ -4,7 +4,7 @@ import { buildComponentFromVNode } from './component';
 import { createNode, setAccessor } from '../dom/index';
 import { unmountComponent } from './component';
 import options from '../options';
-import { removeNode } from '../dom';
+import { removeNode, clearStyle } from '../dom';
 
 /** Queue of components that have been mounted and are awaiting componentDidMount */
 export const mounts = [];
@@ -260,6 +260,7 @@ export function recollectNodeTree(node, unmountOnly) {
 			removeNode(node);
 		}
 
+		clearStyle(node);
 		removeChildren(node);
 	}
 }

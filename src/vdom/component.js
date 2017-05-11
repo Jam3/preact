@@ -5,7 +5,7 @@ import { enqueueRender } from '../render-queue';
 import { getNodeProps } from './index';
 import { diff, mounts, diffLevel, flushMounts, recollectNodeTree, removeChildren } from './diff';
 import { createComponent, collectComponent } from './component-recycler';
-import { removeNode } from '../dom';
+import { removeNode, clearStyle } from '../dom';
 
 /** Set a component's `props` (generally derived from JSX attributes).
  *	@param {Object} props
@@ -267,6 +267,7 @@ export function unmountComponent(component) {
 		removeNode(base);
 		collectComponent(component);
 
+		clearStyle(base);
 		removeChildren(base);
 	}
 

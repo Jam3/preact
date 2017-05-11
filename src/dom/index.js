@@ -23,6 +23,15 @@ export function removeNode(node) {
 }
 
 
+/** Remove the style attribute from a node.
+ *	@param {Element} node		The node to remove the style attribtue from.
+ */
+export function clearStyle(node) {
+	if (node && typeof node.style !== 'undefined' && typeof node.removeAttribute === 'function') {
+		node.removeAttribute('style');
+	}
+}
+
 /** Set a named attribute on the given Node, with special behavior for some names and event handlers.
  *	If `value` is `null`, the attribute/handler will be removed.
  *	@param {Element} node	An element to mutate
